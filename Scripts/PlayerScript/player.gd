@@ -3,11 +3,23 @@ extends CharacterBody3D
 
 @export var SPEED = 5.0
 @export var mouse_sens:float = 0.01
+@export var camera_tilt_val:float = 4
+@export var max_tilt = 0.08
+@export var target_tilt = 0.0
+
 
 @onready var neck: Node3D = $Neck
+@onready var camera_3d: Camera3D = $Neck/Camera3D
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func camera_tilt(delta):
+	var input_axis = Input.get_axis("left", "right")
+	target_tilt = -input_axis * max_tilt
+	
+	camera_3d.rotation.z = lerp(camera_3d.rotation.z, target_tilt, camera_tilt_val * delta)
 
 
 func _input(event: InputEvent) -> void:
@@ -18,6 +30,8 @@ func _input(event: InputEvent) -> void:
 		neck.rotation.x = deg_to_rad(clamp(rad_to_deg(neck.rotation.x), -90, 50))
 
 func movement(delta):
+	camera_tilt(delta)
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -35,7 +49,3 @@ func movement(delta):
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
-
-
-# hi there do this and i will kiss you
-#try this
