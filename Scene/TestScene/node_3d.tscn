@@ -18,4 +18,4 @@ shape = SubResource("BoxShape3D_noarx")
 transform = Transform3D(3.3251154, 0, 0, 0, 1, 0, 0, 0, 2.9670544, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_pc11m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.8953202)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5.6783934)
