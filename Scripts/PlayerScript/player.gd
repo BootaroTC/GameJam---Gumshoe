@@ -35,3 +35,6 @@ func movement(delta):
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
+
+
+# hi there do this and i will kiss you
