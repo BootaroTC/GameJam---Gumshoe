@@ -29,7 +29,6 @@ func _input(event: InputEvent) -> void:
 		neck.rotation.x = deg_to_rad(clamp(rad_to_deg(neck.rotation.x), -90, 50))
 
 func movement(delta):
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
