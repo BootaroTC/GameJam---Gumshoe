@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crjqklowipup8"
-path.s3tc="res://.godot/imported/Gun_00003.png-ed46026675a83acf2adfd50e4897feed.s3tc.ctex"
+uid="uid://c58avqesqo4v6"
+path.s3tc="res://.godot/imported/CrosshairLine.png-571553f67285398cec3dc57860211960.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/Gun/GunIdle/Gun_00003.png"
-dest_files=["res://.godot/imported/Gun_00003.png-ed46026675a83acf2adfd50e4897feed.s3tc.ctex"]
+source_file="res://Sprites/Gun/Crosshair/CrosshairLine.png"
+dest_files=["res://.godot/imported/CrosshairLine.png-571553f67285398cec3dc57860211960.s3tc.ctex"]
 
 [params]
 
