@@ -34,7 +34,6 @@ func shooting():
 	if ammo <= 5:
 		_reloading()
 
-
 func _reloading():
 	if ((ammo <= 0) or (ammo <= 5 and Input.is_action_just_pressed("reload"))) and !reloading:
 		reloading = true
@@ -44,10 +43,10 @@ func _reloading():
 		ammo = max_ammo
 		reloading = false
 
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	ammo = max_ammo
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var mouse_motion:Vector2 = event.relative
@@ -69,7 +68,6 @@ func movement(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	move_and_slide()
-
 
 func _physics_process(delta: float) -> void:
 	shooting()
