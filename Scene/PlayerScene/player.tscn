@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxn6fsb5astcu"]
+[gd_scene load_steps=13 format=3 uid="uid://cxn6fsb5astcu"]
 
 [ext_resource type="Script" uid="uid://dhad0e865fcq0" path="res://Scripts/PlayerScript/player.gd" id="1_ikhmg"]
 [ext_resource type="Texture2D" uid="uid://yk8wywjeh8tv" path="res://Sprites/GunUI/GunIdle/Gun.png" id="2_3csk6"]
@@ -42,6 +42,8 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="BoxMesh" id="BoxMesh_5nuyq"]
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_ikhmg")
 
@@ -64,7 +66,15 @@ shape = SubResource("CapsuleShape3D_ikhmg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6005157, -0.2976774)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Neck"]
-transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0.11218575, 0.7601303, -0.7443194)
+transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0.14299956, 0.7293216, -0.7443194)
 no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_3csk6")
 autoplay = "default"
+
+[node name="GunMesh" type="MeshInstance3D" parent="Neck"]
+transform = Transform3D(0.14458296, 0, 0.18738577, 0.003971094, 0.15757926, -0.07761987, -0.03701782, 0.016904345, 0.7235584, 0.46638662, 0.5223505, -0.5385797)
+visible = false
+mesh = SubResource("BoxMesh_5nuyq")
+
+[node name="RayCast3D" type="RayCast3D" parent="Neck"]
+transform = Transform3D(0.7811643, 0.44072008, -0.14511412, -0.06376268, -0.1906708, -1.3334819, -0.23035777, 1.5472986, -0.1229894, 0.3934719, 0.55516076, -0.8599023)

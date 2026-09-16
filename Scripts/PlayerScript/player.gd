@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-@export var SPEED = 5.0
+@export var SPEED = 10.0
 @export var mouse_sens:float = 0.01
 @export var camera_tilt_val:float = 4
 @export var max_tilt = 0.08
@@ -10,17 +10,20 @@ extends CharacterBody3D
 
 @onready var neck: Node3D = $Neck
 @onready var camera_3d: Camera3D = $Neck/Camera3D
+@onready var ray_cast_3d: RayCast3D = $Neck/RayCast3D
+
+func shoot():
+	if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
+		ray_cast_3d.get_collider().queue_free()
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 
 func camera_tilt(delta):
 	var input_axis = Input.get_axis("left", "right")
 	target_tilt = -input_axis * max_tilt
 	
 	camera_3d.rotation.z = lerp(camera_3d.rotation.z, target_tilt, camera_tilt_val * delta)
-
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -48,4 +51,5 @@ func movement(delta):
 
 
 func _physics_process(delta: float) -> void:
+	shoot()
 	movement(delta)
