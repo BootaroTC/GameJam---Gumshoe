@@ -1,16 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxn6fsb5astcu"]
+[gd_scene load_steps=29 format=3 uid="uid://cxn6fsb5astcu"]
 
 [ext_resource type="Script" uid="uid://dhad0e865fcq0" path="res://Scripts/PlayerScript/player.gd" id="1_ikhmg"]
-[ext_resource type="Texture2D" uid="uid://yk8wywjeh8tv" path="res://Sprites/Gun/GunIdle/Gun.png" id="2_3csk6"]
 [ext_resource type="Script" uid="uid://cc5sson58mptn" path="res://Scripts/PlayerScript/CameraScript/camera_3d.gd" id="2_6qdyf"]
-[ext_resource type="Texture2D" uid="uid://ujsgnj2bmffj" path="res://Sprites/Gun/GunIdle/Gun_00001.png" id="3_5nuyq"]
-[ext_resource type="Texture2D" uid="uid://6bdtybbx65y6" path="res://Sprites/Gun/GunIdle/Gun_00002.png" id="4_ypcrx"]
-[ext_resource type="Texture2D" uid="uid://crjqklowipup8" path="res://Sprites/Gun/GunIdle/Gun_00003.png" id="5_6qdyf"]
-[ext_resource type="Texture2D" uid="uid://df5ano0eg1lup" path="res://Sprites/Gun/GunShooting/ShootingBlurry.png" id="7_o7pb7"]
-[ext_resource type="Texture2D" uid="uid://bqy4grkqlvj3s" path="res://Sprites/Gun/Crosshair/Crosshair00.png" id="8_o7pb7"]
-[ext_resource type="Texture2D" uid="uid://b0vf5r5nusn82" path="res://Sprites/Gun/Crosshair/Crosshair01.png" id="9_lxc12"]
-[ext_resource type="Texture2D" uid="uid://bii8vlh33btnj" path="res://Sprites/Gun/Crosshair/Crosshair02.png" id="10_ru1hb"]
-[ext_resource type="Texture2D" uid="uid://b1ic7eevqph36" path="res://Sprites/Gun/Crosshair/Crosshair03.png" id="11_mfq3q"]
+[ext_resource type="Texture2D" uid="uid://b6ham7d5oc2a3" path="res://Sprites/Gun/GunIdle/GunIdleUI_0.png" id="3_lxc12"]
+[ext_resource type="Texture2D" uid="uid://bpgkhlvpp0cex" path="res://Sprites/Gun/GunIdle/GunIdleUI_01.png" id="4_ru1hb"]
+[ext_resource type="Texture2D" uid="uid://dk4d45bj6cm7c" path="res://Sprites/Gun/GunIdle/GunIdleUI_02.png" id="5_mfq3q"]
+[ext_resource type="Texture2D" uid="uid://dmekhuw3if8oy" path="res://Sprites/Gun/GunIdle/GunIdleUI_03.png" id="6_if3m8"]
+[ext_resource type="Texture2D" uid="uid://fre5qgbfqjsw" path="res://Sprites/Gun/GunIdle/GunIdleUI_04.png" id="7_6avwu"]
+[ext_resource type="Texture2D" uid="uid://dsqg3fng27igv" path="res://Sprites/Gun/GunShooting/ShootingBlurry.png" id="7_o7pb7"]
+[ext_resource type="Texture2D" uid="uid://b7u50fp67yxt7" path="res://Sprites/Gun/Crosshair/CrossHairSquare.png" id="9_mfq3q"]
+[ext_resource type="Texture2D" uid="uid://c58avqesqo4v6" path="res://Sprites/Gun/Crosshair/CrosshairLine.png" id="14_if3m8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xp4ec"]
 
@@ -20,16 +19,19 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3csk6")
+"texture": ExtResource("3_lxc12")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5nuyq")
+"texture": ExtResource("4_ru1hb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_ypcrx")
+"texture": ExtResource("5_mfq3q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_6qdyf")
+"texture": ExtResource("6_if3m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6avwu")
 }],
 "loop": true,
 "name": &"Idle",
@@ -48,37 +50,11 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_o7pb7")
+"texture": ExtResource("9_mfq3q")
 }],
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_o7pb7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_lxc12")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_ru1hb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_mfq3q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_ru1hb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_lxc12")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_o7pb7")
-}],
-"loop": false,
-"name": &"Shoot",
-"speed": 60.0
 }]
 
 [sub_resource type="Animation" id="Animation_lxc12"]
@@ -119,20 +95,160 @@ _data = {
 &"ReloadSpin": SubResource("Animation_o7pb7")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_5nuyq"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_svoyg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_if3m8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_ru1hb"]
-resource_name = "Slide"
+[sub_resource type="Animation" id="Animation_6avwu"]
+resource_name = "Shoot"
+length = 0.10000167
+step = 0.016666668
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("Top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, -0.65, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, 0, 2, 0, 0.1, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, 2, 0, 0, 0.1, 1, 0, 0, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, 0, -2, 0, 0.1, 1, 0, 0, 0)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, -2, 0, 0, 0.1, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_irk2k"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_g8nsh"]
+resource_name = "Reload"
+length = 2.0500019
+step = 0.016666668
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 2, 0, 2, 1, 0, 2, 0, 2.0500019, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2, 0, 0, 2, 1, 2, 0, 0, 2.0500019, 1, 0, 0, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, -2, 0, 2, 1, 0, -2, 0, 2.0500019, 1, 0, 0, 0)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -2, 0, 0, 2, 1, -2, 0, 0, 2.0500019, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_svoyg"]
+resource_name = "ShootLastBullet"
+step = 0.016666668
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, 0, 2, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, 2, 0, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, 0, -2, 0)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, -2, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2sccj"]
+_data = {
+&"RESET": SubResource("Animation_irk2k"),
+&"Reload": SubResource("Animation_g8nsh"),
+&"Shoot": SubResource("Animation_6avwu"),
+&"ShootLastBullet": SubResource("Animation_svoyg")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_5nuyq"]
 
 [sub_resource type="Animation" id="Animation_mfq3q"]
+resource_name = "Reload"
 length = 0.001
+step = 0.016666668
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -150,6 +266,16 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.65, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_ru1hb"]
+resource_name = "Slide"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, -0.65, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_if3m8"]
 _data = {
@@ -180,19 +306,40 @@ no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_3csk6")
 animation = &"Shoot"
 autoplay = "Idle"
-frame_progress = 1.0
 
 [node name="Crosshair" type="AnimatedSprite3D" parent="Neck/Camera3D"]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, -0.44796854)
 sprite_frames = SubResource("SpriteFrames_if3m8")
-animation = &"Shoot"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 6
-frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Neck/Camera3D/Crosshair"]
 libraries = {
 &"": SubResource("AnimationLibrary_ru1hb")
+}
+
+[node name="Top" type="AnimatedSprite3D" parent="Neck/Camera3D/Crosshair"]
+sprite_frames = SubResource("SpriteFrames_svoyg")
+autoplay = "default"
+
+[node name="Right" type="AnimatedSprite3D" parent="Neck/Camera3D/Crosshair"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_svoyg")
+autoplay = "default"
+
+[node name="Bottom" type="AnimatedSprite3D" parent="Neck/Camera3D/Crosshair"]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_svoyg")
+autoplay = "default"
+
+[node name="Left" type="AnimatedSprite3D" parent="Neck/Camera3D/Crosshair"]
+transform = Transform3D(1.3113417e-07, -1, 0, 1, 1.3113417e-07, 0, 0, 0, 1, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_svoyg")
+autoplay = "default"
+
+[node name="ShootAnimation" type="AnimationPlayer" parent="Neck/Camera3D/Crosshair"]
+libraries = {
+&"": SubResource("AnimationLibrary_2sccj")
 }
 
 [node name="GunMesh" type="MeshInstance3D" parent="Neck"]

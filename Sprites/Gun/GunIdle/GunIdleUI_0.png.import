@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ujsgnj2bmffj"
-path.s3tc="res://.godot/imported/Gun_00001.png-c54dff0b6aaede111fa6542619cfc8d6.s3tc.ctex"
+uid="uid://b6ham7d5oc2a3"
+path.s3tc="res://.godot/imported/GunIdleUI_0.png-62a81ea100eb83c709ee0ee9bfe68f66.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/Gun/GunIdle/Gun_00001.png"
-dest_files=["res://.godot/imported/Gun_00001.png-c54dff0b6aaede111fa6542619cfc8d6.s3tc.ctex"]
+source_file="res://Sprites/Gun/GunIdle/GunIdleUI_0.png"
+dest_files=["res://.godot/imported/GunIdleUI_0.png-62a81ea100eb83c709ee0ee9bfe68f66.s3tc.ctex"]
 
 [params]
 
