@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ujsgnj2bmffj" path="res://Sprites/Gun/GunIdle/Gun_00001.png" id="3_5nuyq"]
 [ext_resource type="Texture2D" uid="uid://6bdtybbx65y6" path="res://Sprites/Gun/GunIdle/Gun_00002.png" id="4_ypcrx"]
 [ext_resource type="Texture2D" uid="uid://crjqklowipup8" path="res://Sprites/Gun/GunIdle/Gun_00003.png" id="5_6qdyf"]
-[ext_resource type="Texture2D" uid="uid://8bpi2ax62t5e" path="res://Sprites/Gun/GunShooting/GunShooting0.png" id="6_ypcrx"]
+[ext_resource type="Texture2D" uid="uid://df5ano0eg1lup" path="res://Sprites/Gun/GunShooting/ShootingBlurry.png" id="7_o7pb7"]
 [ext_resource type="Texture2D" uid="uid://bqy4grkqlvj3s" path="res://Sprites/Gun/Crosshair/Crosshair00.png" id="8_o7pb7"]
 [ext_resource type="Texture2D" uid="uid://b0vf5r5nusn82" path="res://Sprites/Gun/Crosshair/Crosshair01.png" id="9_lxc12"]
 [ext_resource type="Texture2D" uid="uid://bii8vlh33btnj" path="res://Sprites/Gun/Crosshair/Crosshair02.png" id="10_ru1hb"]
@@ -37,14 +37,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_ypcrx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_ypcrx")
+"texture": ExtResource("7_o7pb7")
 }],
-"loop": true,
+"loop": false,
 "name": &"Shoot",
-"speed": 0.5
+"speed": 8.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_if3m8"]
@@ -145,6 +142,7 @@ no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_3csk6")
 animation = &"Shoot"
 autoplay = "Idle"
+frame_progress = 1.0
 
 [node name="Crosshair" type="AnimatedSprite3D" parent="Neck/Camera3D"]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, -0.44796854)
