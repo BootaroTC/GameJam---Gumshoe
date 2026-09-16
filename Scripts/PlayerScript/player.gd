@@ -6,7 +6,7 @@ class_name Player extends CharacterBody3D
 var can_slide = true
 var is_sliding = false
 var slide_dir = Vector3.ZERO
-var sliding_val = 20.0
+var sliding_val = 40.0
 var max_sliding_amount = 35.0
 
 var max_ammo = 6
@@ -52,7 +52,7 @@ func _reloading():
 		animated_sprite_3d.play("Idle")
 		animation_player.play("ReloadSpin")
 		shoot_animation.play("Reload")
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(2.5).timeout
 		ammo = max_ammo
 		reloading = false
 
@@ -75,13 +75,18 @@ func slide(delta):
 	if is_sliding:
 		if SPEED < max_sliding_amount:
 			SPEED += delta * sliding_val
-			if SPEED >= max_sliding_amount:
-				SPEED -= delta * sliding_val
-				slide_anim.play("Reset_Slide")
-		
-		if SPEED <= 20.0:
-			SPEED = 20.0
+		if SPEED >= max_sliding_amount:
 			is_sliding = false
+		
+	
+	if SPEED > 20.0 and !is_sliding:
+		SPEED -= delta * sliding_val
+		slide_anim.play("Reset_Slide")
+	
+		
+	if SPEED <= 20.0:
+		SPEED = 20.0
+		is_sliding = false
 
 func movement(delta):
 	if not is_on_floor():
@@ -103,4 +108,4 @@ func movement(delta):
 func _physics_process(delta: float) -> void:
 	shooting()
 	movement(delta)
-	print(SPEED)
+	print(ammo)
