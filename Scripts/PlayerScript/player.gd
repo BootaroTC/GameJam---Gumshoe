@@ -1,7 +1,13 @@
 class_name Player extends CharacterBody3D
 
-@export var SPEED = 12.5
+@export var SPEED = 20.0
 @export var mouse_sens:float = 0.01
+
+var can_slide = true
+var is_sliding = false
+var slide_dir = Vector3.ZERO
+var sliding_val = 20.0
+var max_sliding_amount = 35.0
 
 var max_ammo = 6
 var ammo = 0
@@ -14,6 +20,7 @@ var reloading = false
 @onready var animated_sprite_3d: AnimatedSprite3D = $Neck/Camera3D/AnimatedSprite3D
 @onready var crosshair: AnimatedSprite3D = $Neck/Camera3D/Crosshair
 @onready var animation_player: AnimationPlayer = $Neck/Camera3D/Crosshair/AnimationPlayer
+@onready var slide_anim: AnimationPlayer = $Neck/SlideAnim
 
 func shooting():
 	if ammo > 0:
@@ -54,6 +61,22 @@ func _input(event: InputEvent) -> void:
 		neck.rotate_x(-(mouse_motion.y * mouse_sens))
 		neck.rotation.x = deg_to_rad(clamp(rad_to_deg(neck.rotation.x), -90, 50))
 
+func slide(delta):
+	if Input.is_action_just_pressed("slide") and !is_sliding:
+		is_sliding = true
+		slide_anim.play("Slide")
+	
+	if is_sliding:
+		if SPEED < max_sliding_amount:
+			SPEED += delta * sliding_val
+			if SPEED >= max_sliding_amount:
+				SPEED -= delta * sliding_val
+				slide_anim.play("Reset_Slide")
+		
+		if SPEED <= 20.0:
+			SPEED = 20.0
+			is_sliding = false
+
 func movement(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -67,9 +90,11 @@ func movement(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
+	slide(delta)
+	
 	move_and_slide()
 
 func _physics_process(delta: float) -> void:
 	shooting()
 	movement(delta)
-	print(ammo)
+	print(SPEED)

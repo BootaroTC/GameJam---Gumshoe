@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxn6fsb5astcu"]
+[gd_scene load_steps=24 format=3 uid="uid://cxn6fsb5astcu"]
 
 [ext_resource type="Script" uid="uid://dhad0e865fcq0" path="res://Scripts/PlayerScript/player.gd" id="1_ikhmg"]
 [ext_resource type="Texture2D" uid="uid://yk8wywjeh8tv" path="res://Sprites/Gun/GunIdle/Gun.png" id="2_3csk6"]
@@ -121,6 +121,43 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_5nuyq"]
 
+[sub_resource type="Animation" id="Animation_ru1hb"]
+resource_name = "Slide"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, -0.65, 0)
+
+[sub_resource type="Animation" id="Animation_mfq3q"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_if3m8"]
+resource_name = "Reset_Slide"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.65, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_if3m8"]
+_data = {
+&"RESET": SubResource("Animation_mfq3q"),
+&"Reset_Slide": SubResource("Animation_if3m8"),
+&"Slide": SubResource("Animation_ru1hb")
+}
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_ikhmg")
 
@@ -165,3 +202,8 @@ mesh = SubResource("BoxMesh_5nuyq")
 
 [node name="RayCast3D" type="RayCast3D" parent="Neck"]
 transform = Transform3D(0.36997798, 0.41241285, -0.095065005, -0.032182667, 0.0047054887, -1.096425, -0.019785173, 7.7043386, 0.0057585184, 0.3934719, 0.58976936, -0.9699375)
+
+[node name="SlideAnim" type="AnimationPlayer" parent="Neck"]
+libraries = {
+&"": SubResource("AnimationLibrary_if3m8")
+}
