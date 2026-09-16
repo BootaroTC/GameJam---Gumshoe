@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxn6fsb5astcu"]
+[gd_scene load_steps=12 format=3 uid="uid://cxn6fsb5astcu"]
 
 [ext_resource type="Script" uid="uid://dhad0e865fcq0" path="res://Scripts/PlayerScript/player.gd" id="1_ikhmg"]
 [ext_resource type="Texture2D" uid="uid://yk8wywjeh8tv" path="res://Sprites/Misc/Gun.png" id="2_3csk6"]
+[ext_resource type="Texture2D" uid="uid://ujsgnj2bmffj" path="res://Sprites/Misc/Gun_00001.png" id="3_5nuyq"]
+[ext_resource type="Texture2D" uid="uid://6bdtybbx65y6" path="res://Sprites/Misc/Gun_00002.png" id="4_ypcrx"]
+[ext_resource type="Texture2D" uid="uid://crjqklowipup8" path="res://Sprites/Misc/Gun_00003.png" id="5_6qdyf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ikhmg"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,6 +21,26 @@ tonemap_mode = 2
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xp4ec"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ikhmg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3csk6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3csk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5nuyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ypcrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6qdyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_ikhmg")
@@ -37,10 +60,11 @@ shape = SubResource("CapsuleShape3D_ikhmg")
 
 [node name="Neck" type="Node3D" parent="."]
 
-[node name="Sprite3D" type="Sprite3D" parent="Neck"]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.22978711, 0.7254901, -0.9629185)
-pixel_size = 0.001
-texture = ExtResource("2_3csk6")
-
 [node name="Camera3D" type="Camera3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6005157, -0.2976774)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Neck"]
+transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0.11218575, 0.7601303, -0.7443194)
+no_depth_test = true
+sprite_frames = SubResource("SpriteFrames_3csk6")
+autoplay = "default"
