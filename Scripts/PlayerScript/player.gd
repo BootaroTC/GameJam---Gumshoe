@@ -1,7 +1,13 @@
 class_name Player extends CharacterBody3D
 
-@export var SPEED = 12.5
+@export var SPEED = 20.0
 @export var mouse_sens:float = 0.01
+
+var can_slide = true
+var is_sliding = false
+var slide_dir = Vector3.ZERO
+var sliding_val = 20.0
+var max_sliding_amount = 35.0
 
 var max_ammo = 6
 var ammo = 0
@@ -14,28 +20,31 @@ var reloading = false
 @onready var animated_sprite_3d: AnimatedSprite3D = $Neck/Camera3D/AnimatedSprite3D
 @onready var crosshair: AnimatedSprite3D = $Neck/Camera3D/Crosshair
 @onready var animation_player: AnimationPlayer = $Neck/Camera3D/Crosshair/AnimationPlayer
-@onready var shoot_animation: AnimationPlayer = $Neck/Camera3D/Crosshair/ShootAnimation
+@onready var slide_anim: AnimationPlayer = $Neck/SlideAnim
 
 func shooting():
 	if ammo > 0:
+		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
+			ray_cast_3d.get_collider().queue_free() 
+			
 		if Input.is_action_just_pressed("shoot") and !is_shooting:
 			ammo -= 1
 			is_shooting = true
 			animated_sprite_3d.play("Shoot")
-			shoot_animation.play("Shoot")
+			crosshair.play("Shoot")
 			await get_tree().create_timer(0.25).timeout
 			is_shooting = false
-
 		else: 
 			if animated_sprite_3d.is_playing() != true:
 				animated_sprite_3d.play("Idle")
-		
-		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
-			ray_cast_3d.get_collider().queue_free() 
-	elif ammo >= 0 and reloading != true and not is_shooting:
+	
+	if ammo <= 5:
+		_reloading()
+
+func _reloading():
+	if ((ammo <= 0) or (ammo <= 5 and Input.is_action_just_pressed("reload"))) and !reloading:
 		reloading = true
 		animated_sprite_3d.play("Idle")
-		shoot_animation.play("Reload")
 		animation_player.play("ReloadSpin")
 		await get_tree().create_timer(2.0).timeout
 		ammo = max_ammo
@@ -44,12 +53,29 @@ func shooting():
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	ammo = max_ammo
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var mouse_motion:Vector2 = event.relative
 		rotate_y(-(mouse_motion.x * mouse_sens))
 		neck.rotate_x(-(mouse_motion.y * mouse_sens))
 		neck.rotation.x = deg_to_rad(clamp(rad_to_deg(neck.rotation.x), -90, 50))
+
+func slide(delta):
+	if Input.is_action_just_pressed("slide") and !is_sliding:
+		is_sliding = true
+		slide_anim.play("Slide")
+	
+	if is_sliding:
+		if SPEED < max_sliding_amount:
+			SPEED += delta * sliding_val
+			if SPEED >= max_sliding_amount:
+				SPEED -= delta * sliding_val
+				slide_anim.play("Reset_Slide")
+		
+		if SPEED <= 20.0:
+			SPEED = 20.0
+			is_sliding = false
 
 func movement(delta):
 	if not is_on_floor():
@@ -64,10 +90,11 @@ func movement(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
+	slide(delta)
+	
 	move_and_slide()
-
 
 func _physics_process(delta: float) -> void:
 	shooting()
 	movement(delta)
-	print(ammo)
+	print(SPEED)
