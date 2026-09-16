@@ -17,10 +17,13 @@ var reloading = false
 
 func shooting():
 	if ammo > 0:
-		if Input.is_action_just_pressed("shoot"):
+		if Input.is_action_just_pressed("shoot") and !is_shooting:
 			ammo -= 1
+			is_shooting = true
 			animated_sprite_3d.play("Shoot")
 			crosshair.play("Shoot")
+			await get_tree().create_timer(0.25).timeout
+			is_shooting = false
 
 		else: 
 			if animated_sprite_3d.is_playing() != true:
