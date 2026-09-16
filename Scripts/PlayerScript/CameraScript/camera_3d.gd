@@ -1,7 +1,7 @@
 extends Camera3D
 
 @export var camera_tilt_val:float = 5
-@export var max_tilt = 0.065
+@export var max_tilt = 0.08
 @export var target_tilt = 0.0
 
 func camera_tilt(delta):
