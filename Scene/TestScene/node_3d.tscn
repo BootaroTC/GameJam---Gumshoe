@@ -38,9 +38,6 @@ shape = SubResource("BoxShape3D_noarx")
 transform = Transform3D(3.3251154, 0, 0, 0, 1, 0, 0, 0, 2.9670544, 0, 0, 0)
 use_collision = true
 
-[node name="Enemy" parent="StaticBody3D" instance=ExtResource("1_brec0")]
-transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.19999999, 0.4832757, 1.7500005, 0.99193794)
-
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.68083)
 
@@ -54,3 +51,6 @@ use_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_pc11m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.9280467)
+
+[node name="Enemy" parent="." instance=ExtResource("1_brec0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9512606, 1.75, 6.9567614)
