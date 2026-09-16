@@ -12,25 +12,29 @@ var is_shooting  = false
 @onready var camera_3d: Camera3D = $Neck/Camera3D
 @onready var ray_cast_3d: RayCast3D = $Neck/RayCast3D
 @onready var animated_sprite_3d: AnimatedSprite3D = $Neck/Camera3D/AnimatedSprite3D
+@onready var crosshair: AnimatedSprite3D = $Neck/Camera3D/Crosshair
+@onready var animation_player: AnimationPlayer = $Neck/Camera3D/Crosshair/AnimationPlayer
 
 func shooting():
 	if ammo > 0:
 		if Input.is_action_just_pressed("shoot"):
 			ammo -= 1
 			animated_sprite_3d.play("Shoot")
-		else: animated_sprite_3d.play("Idle")
+			crosshair.play("Shoot")
+		else: 
+			animated_sprite_3d.play("Idle")
 		
 		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
 			ray_cast_3d.get_collider().queue_free() 
 	elif ammo >= 0:
 		animated_sprite_3d.play("Idle")
+		animation_player.play("ReloadSpin")
 		await get_tree().create_timer(2.0).timeout
 		ammo = max_ammo
-		
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+	ammo = max_ammo
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var mouse_motion:Vector2 = event.relative

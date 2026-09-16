@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxn6fsb5astcu"]
+[gd_scene load_steps=20 format=3 uid="uid://cxn6fsb5astcu"]
 
 [ext_resource type="Script" uid="uid://dhad0e865fcq0" path="res://Scripts/PlayerScript/player.gd" id="1_ikhmg"]
 [ext_resource type="Texture2D" uid="uid://yk8wywjeh8tv" path="res://Sprites/Gun/GunIdle/Gun.png" id="2_3csk6"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://6bdtybbx65y6" path="res://Sprites/Gun/GunIdle/Gun_00002.png" id="4_ypcrx"]
 [ext_resource type="Texture2D" uid="uid://crjqklowipup8" path="res://Sprites/Gun/GunIdle/Gun_00003.png" id="5_6qdyf"]
 [ext_resource type="Texture2D" uid="uid://8bpi2ax62t5e" path="res://Sprites/Gun/GunShooting/GunShooting0.png" id="6_ypcrx"]
+[ext_resource type="Texture2D" uid="uid://bqy4grkqlvj3s" path="res://Sprites/Gun/Crosshair/Crosshair00.png" id="8_o7pb7"]
+[ext_resource type="Texture2D" uid="uid://b0vf5r5nusn82" path="res://Sprites/Gun/Crosshair/Crosshair01.png" id="9_lxc12"]
+[ext_resource type="Texture2D" uid="uid://bii8vlh33btnj" path="res://Sprites/Gun/Crosshair/Crosshair02.png" id="10_ru1hb"]
+[ext_resource type="Texture2D" uid="uid://b1ic7eevqph36" path="res://Sprites/Gun/Crosshair/Crosshair03.png" id="11_mfq3q"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xp4ec"]
 
@@ -43,6 +47,81 @@ animations = [{
 "speed": 0.5
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_if3m8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_o7pb7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_o7pb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lxc12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ru1hb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mfq3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ru1hb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lxc12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o7pb7")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 60.0
+}]
+
+[sub_resource type="Animation" id="Animation_o7pb7"]
+resource_name = "ReloadSpin"
+length = 2.0000017
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 15.707963)]
+}
+
+[sub_resource type="Animation" id="Animation_lxc12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ru1hb"]
+_data = {
+&"RESET": SubResource("Animation_lxc12"),
+&"ReloadSpin": SubResource("Animation_o7pb7")
+}
+
 [sub_resource type="BoxMesh" id="BoxMesh_5nuyq"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
@@ -66,6 +145,19 @@ no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_3csk6")
 animation = &"Shoot"
 autoplay = "Idle"
+
+[node name="Crosshair" type="AnimatedSprite3D" parent="Neck/Camera3D"]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, -0.44796854)
+sprite_frames = SubResource("SpriteFrames_if3m8")
+animation = &"Shoot"
+autoplay = "Idle"
+frame = 6
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Neck/Camera3D/Crosshair"]
+libraries = {
+&"": SubResource("AnimationLibrary_ru1hb")
+}
 
 [node name="GunMesh" type="MeshInstance3D" parent="Neck"]
 transform = Transform3D(0.14458296, 0, 0.18738577, 0.003971094, 0.15757926, -0.07761987, -0.03701782, 0.016904345, 0.7235584, 0.46638662, 0.5223505, -0.5385797)
