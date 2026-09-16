@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmilmfyg4jlhw"]
+
+[ext_resource type="Texture2D" uid="uid://docgj2nql4dcq" path="res://Sprites/Enemies/TestGuy.png" id="1_3wniu"]
+[ext_resource type="Script" uid="uid://dvh3vba6rqepk" path="res://Scripts/EnemyScript/enemy.gd" id="1_72c1h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wniu"]
+height = 1.7973633
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_72c1h")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+texture = ExtResource("1_3wniu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.20801091, 0)
+shape = SubResource("CapsuleShape3D_3wniu")

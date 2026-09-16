@@ -1,22 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxn6fsb5astcu"]
+[gd_scene load_steps=11 format=3 uid="uid://cxn6fsb5astcu"]
 
 [ext_resource type="Script" uid="uid://dhad0e865fcq0" path="res://Scripts/PlayerScript/player.gd" id="1_ikhmg"]
-[ext_resource type="Texture2D" uid="uid://yk8wywjeh8tv" path="res://Sprites/GunUI/GunIdle/Gun.png" id="2_3csk6"]
-[ext_resource type="Texture2D" uid="uid://ujsgnj2bmffj" path="res://Sprites/GunUI/GunIdle/Gun_00001.png" id="3_5nuyq"]
-[ext_resource type="Texture2D" uid="uid://6bdtybbx65y6" path="res://Sprites/GunUI/GunIdle/Gun_00002.png" id="4_ypcrx"]
-[ext_resource type="Texture2D" uid="uid://crjqklowipup8" path="res://Sprites/GunUI/GunIdle/Gun_00003.png" id="5_6qdyf"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ikhmg"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_3csk6"]
-sky_material = SubResource("ProceduralSkyMaterial_ikhmg")
-
-[sub_resource type="Environment" id="Environment_3xugf"]
-background_mode = 2
-sky = SubResource("Sky_3csk6")
-tonemap_mode = 2
+[ext_resource type="Texture2D" uid="uid://yk8wywjeh8tv" path="res://Sprites/Gun/GunIdle/Gun.png" id="2_3csk6"]
+[ext_resource type="Texture2D" uid="uid://ujsgnj2bmffj" path="res://Sprites/Gun/GunIdle/Gun_00001.png" id="3_5nuyq"]
+[ext_resource type="Texture2D" uid="uid://6bdtybbx65y6" path="res://Sprites/Gun/GunIdle/Gun_00002.png" id="4_ypcrx"]
+[ext_resource type="Texture2D" uid="uid://crjqklowipup8" path="res://Sprites/Gun/GunIdle/Gun_00003.png" id="5_6qdyf"]
+[ext_resource type="Texture2D" uid="uid://8bpi2ax62t5e" path="res://Sprites/Gun/GunShooting/GunShooting0.png" id="6_ypcrx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xp4ec"]
 
@@ -38,21 +27,25 @@ animations = [{
 "texture": ExtResource("5_6qdyf")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ypcrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ypcrx")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 0.5
 }]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5nuyq"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_ikhmg")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3xugf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_xp4ec")
@@ -69,7 +62,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6005157, -0.2976774)
 transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0.14299956, 0.7293216, -0.7443194)
 no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_3csk6")
-autoplay = "default"
+animation = &"Shoot"
+autoplay = "Idle"
 
 [node name="GunMesh" type="MeshInstance3D" parent="Neck"]
 transform = Transform3D(0.14458296, 0, 0.18738577, 0.003971094, 0.15757926, -0.07761987, -0.03701782, 0.016904345, 0.7235584, 0.46638662, 0.5223505, -0.5385797)
@@ -77,4 +71,4 @@ visible = false
 mesh = SubResource("BoxMesh_5nuyq")
 
 [node name="RayCast3D" type="RayCast3D" parent="Neck"]
-transform = Transform3D(0.7811643, 0.44072008, -0.14511412, -0.06376268, -0.1906708, -1.3334819, -0.23035777, 1.5472986, -0.1229894, 0.3934719, 0.55516076, -0.8599023)
+transform = Transform3D(0.37555856, 0.39246708, -0.09458798, -0.03281232, 0.039134383, -1.0927464, -0.024650052, 5.9273653, 0.013477638, 0.3934719, 0.55516076, -0.9699375)

@@ -1,20 +1,27 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 
 @export var SPEED = 10.0
 @export var mouse_sens:float = 0.01
-@export var camera_tilt_val:float = 4
-@export var max_tilt = 0.08
+@export var camera_tilt_val:float = 3
+@export var max_tilt = 0.07
 @export var target_tilt = 0.0
 
 
 @onready var neck: Node3D = $Neck
 @onready var camera_3d: Camera3D = $Neck/Camera3D
 @onready var ray_cast_3d: RayCast3D = $Neck/RayCast3D
+@onready var animated_sprite_3d: AnimatedSprite3D = $Neck/AnimatedSprite3D
 
-func shoot():
+func shooting():
+	
+	if Input.is_action_just_pressed("shoot"):
+		animated_sprite_3d.play("Shoot")
+	else: animated_sprite_3d.play("Idle")
+		
 	if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
 		ray_cast_3d.get_collider().queue_free()
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -51,5 +58,5 @@ func movement(delta):
 
 
 func _physics_process(delta: float) -> void:
-	shoot()
+	shooting()
 	movement(delta)
