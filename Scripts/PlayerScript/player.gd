@@ -25,11 +25,11 @@ var reloading = false
 
 func shooting():
 	if ammo > 0:
-		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
-			ray_cast_3d.get_collider().queue_free() 
-			
-		if Input.is_action_just_pressed("shoot") and !is_shooting:
+		if Input.is_action_just_pressed("shoot") and !is_shooting and !reloading:
+			if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
+				ray_cast_3d.get_collider().queue_free() 
 			ammo -= 1
+			
 			is_shooting = true
 			animated_sprite_3d.play("Shoot")
 			if ammo == 0:
@@ -49,10 +49,10 @@ func shooting():
 func _reloading():
 	if ((ammo <= 0) or (ammo <= 5 and Input.is_action_just_pressed("reload"))) and !reloading and !is_shooting:
 		reloading = true
-		animated_sprite_3d.play("Idle")
+		animated_sprite_3d.play("Reload")
 		animation_player.play("ReloadSpin")
 		shoot_animation.play("Reload")
-		await get_tree().create_timer(2.5).timeout
+		await get_tree().create_timer(2).timeout
 		ammo = max_ammo
 		reloading = false
 
@@ -108,4 +108,4 @@ func movement(delta):
 func _physics_process(delta: float) -> void:
 	shooting()
 	movement(delta)
-	print(ammo)
+	print(SPEED)

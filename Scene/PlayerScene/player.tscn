@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cxn6fsb5astcu"]
+[gd_scene load_steps=33 format=3 uid="uid://cxn6fsb5astcu"]
 
 [ext_resource type="Script" uid="uid://dhad0e865fcq0" path="res://Scripts/PlayerScript/player.gd" id="1_ikhmg"]
 [ext_resource type="Script" uid="uid://cc5sson58mptn" path="res://Scripts/PlayerScript/CameraScript/camera_3d.gd" id="2_6qdyf"]
@@ -8,7 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://dmekhuw3if8oy" path="res://Sprites/Gun/GunIdle/GunIdleUI_03.png" id="6_if3m8"]
 [ext_resource type="Texture2D" uid="uid://fre5qgbfqjsw" path="res://Sprites/Gun/GunIdle/GunIdleUI_04.png" id="7_6avwu"]
 [ext_resource type="Texture2D" uid="uid://dsqg3fng27igv" path="res://Sprites/Gun/GunShooting/ShootingBlurry.png" id="7_o7pb7"]
+[ext_resource type="Texture2D" uid="uid://cqpeja5256abr" path="res://Sprites/Gun/Reload/GunOpen.png" id="8_mfq3q"]
+[ext_resource type="Texture2D" uid="uid://c4og6dyr71muu" path="res://Sprites/Gun/Reload/GunOpenAndHan.png" id="9_if3m8"]
 [ext_resource type="Texture2D" uid="uid://b7u50fp67yxt7" path="res://Sprites/Gun/Crosshair/CrossHairSquare.png" id="9_mfq3q"]
+[ext_resource type="Texture2D" uid="uid://b5m7qktwjqjy0" path="res://Sprites/Gun/Reload/AddinBoolets.png" id="10_6avwu"]
+[ext_resource type="Texture2D" uid="uid://bjlq2qloqpb2l" path="res://Sprites/Gun/Reload/Spinning.png" id="11_irk2k"]
 [ext_resource type="Texture2D" uid="uid://c58avqesqo4v6" path="res://Sprites/Gun/Crosshair/CrosshairLine.png" id="14_if3m8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xp4ec"]
@@ -35,6 +39,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mfq3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_if3m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6avwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_irk2k")
+}],
+"loop": false,
+"name": &"Reload",
 "speed": 3.0
 }, {
 "frames": [{
@@ -304,8 +325,10 @@ script = ExtResource("2_6qdyf")
 transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0.14299956, 0.12880588, -0.44664198)
 no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_3csk6")
-animation = &"Shoot"
+animation = &"Reload"
 autoplay = "Idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="Crosshair" type="AnimatedSprite3D" parent="Neck/Camera3D"]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, -0.44796854)
