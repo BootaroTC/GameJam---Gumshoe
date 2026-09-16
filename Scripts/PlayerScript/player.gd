@@ -3,7 +3,10 @@ class_name Player extends CharacterBody3D
 @export var SPEED = 12.5
 @export var mouse_sens:float = 0.01
 
-var crouch_val = 20
+var max_ammo = 6
+var ammo = 0
+var is_shooting  = false
+
 
 @onready var neck: Node3D = $Neck
 @onready var camera_3d: Camera3D = $Neck/Camera3D
@@ -11,12 +14,19 @@ var crouch_val = 20
 @onready var animated_sprite_3d: AnimatedSprite3D = $Neck/Camera3D/AnimatedSprite3D
 
 func shooting():
-	if Input.is_action_just_pressed("shoot"):
-		animated_sprite_3d.play("Shoot")
-	else: animated_sprite_3d.play("Idle")
+	if ammo > 0:
+		if Input.is_action_just_pressed("shoot"):
+			ammo -= 1
+			animated_sprite_3d.play("Shoot")
+		else: animated_sprite_3d.play("Idle")
 		
-	if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
-		ray_cast_3d.get_collider().queue_free()
+		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
+			ray_cast_3d.get_collider().queue_free() 
+	elif ammo >= 0:
+		animated_sprite_3d.play("Idle")
+		await get_tree().create_timer(2.0).timeout
+		ammo = max_ammo
+		
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -47,3 +57,4 @@ func movement(delta):
 func _physics_process(delta: float) -> void:
 	shooting()
 	movement(delta)
+	print(ammo)
