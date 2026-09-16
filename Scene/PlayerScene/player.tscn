@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxn6fsb5astcu"]
+[gd_scene load_steps=12 format=3 uid="uid://cxn6fsb5astcu"]
 
 [ext_resource type="Script" uid="uid://dhad0e865fcq0" path="res://Scripts/PlayerScript/player.gd" id="1_ikhmg"]
 [ext_resource type="Texture2D" uid="uid://yk8wywjeh8tv" path="res://Sprites/Gun/GunIdle/Gun.png" id="2_3csk6"]
+[ext_resource type="Script" uid="uid://cc5sson58mptn" path="res://Scripts/PlayerScript/CameraScript/camera_3d.gd" id="2_6qdyf"]
 [ext_resource type="Texture2D" uid="uid://ujsgnj2bmffj" path="res://Sprites/Gun/GunIdle/Gun_00001.png" id="3_5nuyq"]
 [ext_resource type="Texture2D" uid="uid://6bdtybbx65y6" path="res://Sprites/Gun/GunIdle/Gun_00002.png" id="4_ypcrx"]
 [ext_resource type="Texture2D" uid="uid://crjqklowipup8" path="res://Sprites/Gun/GunIdle/Gun_00003.png" id="5_6qdyf"]
@@ -57,9 +58,10 @@ shape = SubResource("CapsuleShape3D_ikhmg")
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6005157, -0.2976774)
+script = ExtResource("2_6qdyf")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Neck"]
-transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0.14299956, 0.7293216, -0.7443194)
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Neck/Camera3D"]
+transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0.14299956, 0.12880588, -0.44664198)
 no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_3csk6")
 animation = &"Shoot"
