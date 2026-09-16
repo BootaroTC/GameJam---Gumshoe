@@ -6,7 +6,7 @@ class_name Player extends CharacterBody3D
 var max_ammo = 6
 var ammo = 0
 var is_shooting  = false
-
+var reloading = false
 
 @onready var neck: Node3D = $Neck
 @onready var camera_3d: Camera3D = $Neck/Camera3D
@@ -21,16 +21,20 @@ func shooting():
 			ammo -= 1
 			animated_sprite_3d.play("Shoot")
 			crosshair.play("Shoot")
+
 		else: 
-			animated_sprite_3d.play("Idle")
+			if animated_sprite_3d.is_playing() != true:
+				animated_sprite_3d.play("Idle")
 		
 		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
 			ray_cast_3d.get_collider().queue_free() 
-	elif ammo >= 0:
+	elif ammo >= 0 and reloading != true:
+		reloading = true
 		animated_sprite_3d.play("Idle")
 		animation_player.play("ReloadSpin")
 		await get_tree().create_timer(2.0).timeout
 		ammo = max_ammo
+		reloading = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
