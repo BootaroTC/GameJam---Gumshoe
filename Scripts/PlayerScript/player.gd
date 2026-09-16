@@ -21,6 +21,7 @@ var reloading = false
 @onready var crosshair: AnimatedSprite3D = $Neck/Camera3D/Crosshair
 @onready var animation_player: AnimationPlayer = $Neck/Camera3D/Crosshair/AnimationPlayer
 @onready var slide_anim: AnimationPlayer = $Neck/SlideAnim
+@onready var shoot_animation: AnimationPlayer = $Neck/Camera3D/Crosshair/ShootAnimation
 
 func shooting():
 	if ammo > 0:
@@ -31,7 +32,11 @@ func shooting():
 			ammo -= 1
 			is_shooting = true
 			animated_sprite_3d.play("Shoot")
-			crosshair.play("Shoot")
+			if ammo == 0:
+				shoot_animation.play("ShootLastBullet")
+			else:
+				shoot_animation.play("Shoot")
+				
 			await get_tree().create_timer(0.25).timeout
 			is_shooting = false
 		else: 
@@ -42,10 +47,11 @@ func shooting():
 		_reloading()
 
 func _reloading():
-	if ((ammo <= 0) or (ammo <= 5 and Input.is_action_just_pressed("reload"))) and !reloading:
+	if ((ammo <= 0) or (ammo <= 5 and Input.is_action_just_pressed("reload"))) and !reloading and !is_shooting:
 		reloading = true
 		animated_sprite_3d.play("Idle")
 		animation_player.play("ReloadSpin")
+		shoot_animation.play("Reload")
 		await get_tree().create_timer(2.0).timeout
 		ammo = max_ammo
 		reloading = false
