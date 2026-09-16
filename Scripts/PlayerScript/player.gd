@@ -17,6 +17,9 @@ var reloading = false
 
 func shooting():
 	if ammo > 0:
+		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
+			ray_cast_3d.get_collider().queue_free() 
+		
 		if Input.is_action_just_pressed("shoot") and !is_shooting:
 			ammo -= 1
 			is_shooting = true
@@ -24,14 +27,11 @@ func shooting():
 			crosshair.play("Shoot")
 			await get_tree().create_timer(0.25).timeout
 			is_shooting = false
-
 		else: 
 			if animated_sprite_3d.is_playing() != true:
 				animated_sprite_3d.play("Idle")
-		
-		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
-			ray_cast_3d.get_collider().queue_free() 
-	elif ammo >= 0 and reloading != true:
+	
+	elif ammo >= 0 and !reloading:
 		reloading = true
 		animated_sprite_3d.play("Idle")
 		animation_player.play("ReloadSpin")
