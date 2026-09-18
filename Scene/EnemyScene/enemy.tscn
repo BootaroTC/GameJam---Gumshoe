@@ -40,7 +40,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 flip_h = true
 sprite_frames = SubResource("SpriteFrames_3wniu")
 animation = &"Shoot"
-frame_progress = 0.9779021
+frame_progress = 0.50776064
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.20801091, 0)
