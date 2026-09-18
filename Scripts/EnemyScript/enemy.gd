@@ -2,7 +2,11 @@ extends CharacterBody3D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
+@onready var ray_cast_3d: RayCast3D = $RayCast3D
+
 var target = null
+
+var can_shoot = true
 
 func _ready() -> void:
 	target = player
@@ -10,6 +14,27 @@ func _ready() -> void:
 func target_player():
 	look_at(target.global_transform.origin,Vector3.UP)
 
+func shoot():
+	if can_shoot:
+		can_shoot = false
+		if ray_cast_3d.is_colliding():
+			if ray_cast_3d.get_collider() == target:
+				if randf() < 0.2:
+					target.queue_free()
+
+func _on_timer_timeout() -> void:
+	can_shoot = true
+
+func _in_range_of_player():
+	var distance_to_player = global_position.distance_to(target.global_position)
+	
+	if distance_to_player <= 15:
+		target_player()
+	
+	if distance_to_player <= 10:
+		shoot()
+
 
 func _physics_process(_delta: float) -> void:
-	target_player()
+	_in_range_of_player()
+	print(can_shoot)

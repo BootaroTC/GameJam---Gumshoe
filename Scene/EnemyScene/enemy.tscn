@@ -17,3 +17,11 @@ texture = ExtResource("2_72c1h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.20801091, 0)
 shape = SubResource("CapsuleShape3D_3wniu")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(-0.85966474, 0.32095534, 0.0026887457, -2.2304112e-09, 0.34116128, -3.2445714, 0.024012446, 11.490458, 0.09625894, 0.340091, 0.21978518, 0)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

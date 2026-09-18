@@ -50,7 +50,7 @@ transform = Transform3D(3.325116, 0, 0, 0, -4.371139e-08, -2.9670544, 0, 1, -1.2
 use_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_pc11m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.9280467)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -19.965164)
 
 [node name="Enemy" parent="." instance=ExtResource("1_brec0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9512606, 1.75, 6.9567614)
