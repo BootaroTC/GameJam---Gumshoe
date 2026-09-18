@@ -21,6 +21,7 @@ func shoot():
 			if ray_shoot.get_collider() == target:
 				if randf() < 0.15:
 					target.health -= 1
+					player.healthbar.value = player.health
 
 func _on_timer_timeout() -> void:
 	can_shoot = true

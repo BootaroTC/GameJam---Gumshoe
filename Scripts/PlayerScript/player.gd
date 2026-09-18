@@ -26,10 +26,12 @@ var reloading = false
 @onready var animation_player: AnimationPlayer = $Neck/Camera3D/Crosshair/AnimationPlayer
 @onready var slide_anim: AnimationPlayer = $Neck/SlideAnim
 @onready var shoot_animation: AnimationPlayer = $Neck/Camera3D/Crosshair/ShootAnimation
+@onready var healthbar: TextureProgressBar = $Healthbar
+
 
 func _ready() -> void:
 	health = max_heatlh
-	
+	healthbar.value = health
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	ammo = max_ammo
 
@@ -38,8 +40,7 @@ func health_check():
 		health = max_heatlh
 	
 	if health <= 0:
-		queue_free()
-	
+		get_tree().reload_current_scene()
 
 func shooting():
 	if ammo > 0:
@@ -123,4 +124,3 @@ func _physics_process(delta: float) -> void:
 	health_check()
 	shooting()
 	movement(delta)
-	print(health)
