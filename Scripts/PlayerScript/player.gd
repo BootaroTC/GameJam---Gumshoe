@@ -6,7 +6,6 @@ class_name Player extends CharacterBody3D
 var max_heatlh = 3
 var health = 0
 
-
 var can_slide = true
 var is_sliding = false
 var slide_dir = Vector3.ZERO
@@ -44,10 +43,9 @@ func health_check():
 
 func shooting():
 	if ammo > 0:
-		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
-			ray_cast_3d.get_collider().queue_free() 
-			
 		if Input.is_action_just_pressed("shoot") and !is_shooting and !reloading:
+			if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
+				ray_cast_3d.get_collider().queue_free() 
 			ammo -= 1
 			is_shooting = true
 			animated_sprite_3d.play("Shoot")
