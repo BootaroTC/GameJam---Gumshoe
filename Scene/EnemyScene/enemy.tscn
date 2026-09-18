@@ -1,7 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmilmfyg4jlhw"]
+[gd_scene load_steps=6 format=3 uid="uid://bmilmfyg4jlhw"]
 
 [ext_resource type="Script" uid="uid://dvh3vba6rqepk" path="res://Scripts/EnemyScript/enemy.gd" id="1_72c1h"]
 [ext_resource type="Texture2D" uid="uid://ddhoxbn50lpv4" path="res://Sprites/Enemies/BadGuy.png" id="2_72c1h"]
+[ext_resource type="Texture2D" uid="uid://d1xhbuoilqo1a" path="res://Sprites/Enemies/Enemy_Shooting.png" id="3_6u7lk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3wniu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_72c1h")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_72c1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6u7lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_72c1h")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 3.0
+}]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wniu"]
 height = 1.7973633
@@ -9,10 +35,12 @@ height = 1.7973633
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_72c1h")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 flip_h = true
-texture = ExtResource("2_72c1h")
+sprite_frames = SubResource("SpriteFrames_3wniu")
+animation = &"Shoot"
+frame_progress = 0.9779021
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.20801091, 0)
@@ -22,6 +50,7 @@ shape = SubResource("CapsuleShape3D_3wniu")
 transform = Transform3D(-0.85966474, 0.32095534, 0.0026887457, -2.2304112e-09, 0.34116128, -3.2445714, 0.024012446, 11.490458, 0.09625894, 0.340091, 0.21978518, 0)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
