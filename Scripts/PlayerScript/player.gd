@@ -3,6 +3,10 @@ class_name Player extends CharacterBody3D
 @export var SPEED = 20.0
 @export var mouse_sens:float = 0.01
 
+var max_heatlh = 3
+var health = 0
+
+
 var can_slide = true
 var is_sliding = false
 var slide_dir = Vector3.ZERO
@@ -23,13 +27,27 @@ var reloading = false
 @onready var slide_anim: AnimationPlayer = $Neck/SlideAnim
 @onready var shoot_animation: AnimationPlayer = $Neck/Camera3D/Crosshair/ShootAnimation
 
+func _ready() -> void:
+	health = max_heatlh
+	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	ammo = max_ammo
+
+func health_check():
+	if health > max_heatlh:
+		health = max_heatlh
+	
+	if health <= 0:
+		queue_free()
+	
+
 func shooting():
 	if ammo > 0:
-		if Input.is_action_just_pressed("shoot") and !is_shooting and !reloading:
-			if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
-				ray_cast_3d.get_collider().queue_free() 
-			ammo -= 1
+		if ray_cast_3d.is_colliding() && Input.is_action_just_pressed("shoot"):
+			ray_cast_3d.get_collider().queue_free() 
 			
+		if Input.is_action_just_pressed("shoot") and !is_shooting:
+			ammo -= 1
 			is_shooting = true
 			animated_sprite_3d.play("Shoot")
 			if ammo == 0:
@@ -49,16 +67,12 @@ func shooting():
 func _reloading():
 	if ((ammo <= 0) or (ammo <= 5 and Input.is_action_just_pressed("reload"))) and !reloading and !is_shooting:
 		reloading = true
-		animated_sprite_3d.play("Reload")
+		animated_sprite_3d.play("Idle")
 		animation_player.play("ReloadSpin")
 		shoot_animation.play("Reload")
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(2.5).timeout
 		ammo = max_ammo
 		reloading = false
-
-func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	ammo = max_ammo
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -106,6 +120,7 @@ func movement(delta):
 	move_and_slide()
 
 func _physics_process(delta: float) -> void:
+	health_check()
 	shooting()
 	movement(delta)
-	print(SPEED)
+	print(health)

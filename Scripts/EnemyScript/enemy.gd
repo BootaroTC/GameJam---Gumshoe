@@ -2,8 +2,7 @@ extends CharacterBody3D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-
-@onready var ray_shoot: RayCast3D = $Shoot
+@onready var ray_shoot: RayCast3D = $Ray_Shoot
 
 var target = null
 
@@ -21,7 +20,7 @@ func shoot():
 		if ray_shoot.is_colliding():
 			if ray_shoot.get_collider() == target:
 				if randf() < 0.15:
-					target.queue_free()
+					target.health -= 1
 
 func _on_timer_timeout() -> void:
 	can_shoot = true
