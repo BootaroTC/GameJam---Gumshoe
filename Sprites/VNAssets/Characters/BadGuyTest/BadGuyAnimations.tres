@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dsniap30nmlkf"]
+
+[ext_resource type="Texture2D" uid="uid://ddhoxbn50lpv4" path="res://Sprites/Enemies/BadGuy.png" id="1_wu3sk"]
+[ext_resource type="Texture2D" uid="uid://c6mtrvql14gbv" path="res://Sprites/Enemies/BadGuyShooting.png" id="2_adk76"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wu3sk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wu3sk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_adk76")
+}],
+"loop": true,
+"name": &"Speaking",
+"speed": 4.0
+}]

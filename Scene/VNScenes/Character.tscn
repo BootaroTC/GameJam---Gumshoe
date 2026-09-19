@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7mrg37k8dm3v"]
+
+[ext_resource type="SpriteFrames" uid="uid://bv6morl4eii0x" path="res://Sprites/VNAssets/Characters/TestGoodGuy/GooleAnimations.tres" id="1_i1m17"]
+[ext_resource type="Script" uid="uid://b7e0g4hy2ktju" path="res://Scripts/VNScripts/vn_character_sprite.gd" id="1_vop3a"]
+
+[node name="CharacterSprite" type="Node2D"]
+script = ExtResource("1_vop3a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_i1m17")
+animation = &"Speaking"
+frame_progress = 0.20753823
