@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb12ceble3c8n"]
+
+[ext_resource type="Texture2D" uid="uid://dlw8620avhpu4" path="res://Sprites/VNAssets/Characters/TestGoodGuy/GOOLE.png" id="1_16se1"]
+[ext_resource type="Texture2D" uid="uid://bsdxg7sqi3rq2" path="res://Sprites/VNAssets/Characters/TestGoodGuy/Gooleopenmouth.png" id="2_6aivn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gdlf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_16se1")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_16se1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6aivn")
+}],
+"loop": true,
+"name": &"Speaking",
+"speed": 4.0
+}]
+
+[node name="TestCharacter" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gdlf3")
+animation = &"Idle"

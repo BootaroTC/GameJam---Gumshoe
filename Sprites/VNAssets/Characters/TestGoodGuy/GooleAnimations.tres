@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bv6morl4eii0x"]
+
+[ext_resource type="Texture2D" uid="uid://dlw8620avhpu4" path="res://Sprites/VNAssets/Characters/TestGoodGuy/GOOLE.png" id="1_xooce"]
+[ext_resource type="Texture2D" uid="uid://bsdxg7sqi3rq2" path="res://Sprites/VNAssets/Characters/TestGoodGuy/Gooleopenmouth.png" id="2_dvsy6"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xooce")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xooce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dvsy6")
+}],
+"loop": true,
+"name": &"Speaking",
+"speed": 4.0
+}]
