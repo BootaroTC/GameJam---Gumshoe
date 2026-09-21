@@ -1,0 +1,24 @@
+[
+	{"location": "moon", "music": "moon_theme"},
+	{"speaker": "BadGuy", "text": "HUH!? Your bankai.. takes us to the moon!?"},
+	{"speaker": "Goole", "text": "Yep. Because youve really..."},
+	{"speaker": "Goole", "text": "REALLY, PISSED ME OFF!", "expression": "angry"},
+	{"speaker": "Goole", "text": "Yep. YOU DID!", "show_character": "BadGuy", "expression": "scared"},
+	{"speaker": "Goole", "text": "It seems that...."},
+	{"choices":
+		[
+			{"text": "I'm feeling kind today.", "goto": "return_office"},
+			{"text": "An Inspector Has Called.", "goto": "ult_attack"}
+		]
+	},
+	{"anchor": "return_office"},
+	{"location": "office", "music": "office_music"},
+	{"speaker": "Goole", "text": "Here."},
+	{"goto": "end"},
+	{"anchor": "ult_attack"},
+	{"speaker": "Goole", "text": "Omaewa, mou shindeiru."},
+	{"speaker": "BadGuy", "text": "Nani?!!", "expression": "scared"},
+	{"goto": "end"},
+	{"anchor": "end"},
+	{"next_scene": "", "transition": "fade"}
+]

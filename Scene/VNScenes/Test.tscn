@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4gyhxe1x8xgp"]
 
 [ext_resource type="Script" uid="uid://dqvomos8ljoef" path="res://Scripts/VNScripts/main_vn_scene.gd" id="1_eb6ua"]
-[ext_resource type="Texture2D" uid="uid://yxp1i3gfx3je" path="res://Sprites/VNAssets/Backgrounds/TestBckg.png" id="1_smcl3"]
+[ext_resource type="Texture2D" uid="uid://yxp1i3gfx3je" path="res://Sprites/VNAssets/Backgrounds/office.png" id="1_smcl3"]
 [ext_resource type="PackedScene" uid="uid://o44cw3400hen" path="res://Scene/VNScenes/ReusableAssets/DialogBox.tscn" id="3_28evq"]
 [ext_resource type="PackedScene" uid="uid://c7mrg37k8dm3v" path="res://Scene/VNScenes/Character.tscn" id="3_eb6ua"]
 
@@ -11,7 +11,8 @@ script = ExtResource("1_eb6ua")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

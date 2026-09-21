@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsdxg7sqi3rq2"
-path="res://.godot/imported/Gooleopenmouth.png-22857b99eada42b011722a9e97622236.ctex"
+uid="uid://cr2ajnhdg8odr"
+path="res://.godot/imported/Frame1.png-1cd94dd05eaf97e725a12f3615247208.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/VNAssets/Characters/TestGoodGuy/Gooleopenmouth.png"
-dest_files=["res://.godot/imported/Gooleopenmouth.png-22857b99eada42b011722a9e97622236.ctex"]
+source_file="res://Sprites/VNAssets/Characters/TestGoodGuy/angry-idle/Frame1.png"
+dest_files=["res://.godot/imported/Frame1.png-1cd94dd05eaf97e725a12f3615247208.ctex"]
 
 [params]
 
