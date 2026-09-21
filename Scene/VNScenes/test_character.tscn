@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bb12ceble3c8n"]
 
-[ext_resource type="Texture2D" uid="uid://dlw8620avhpu4" path="res://Sprites/VNAssets/Characters/TestGoodGuy/GOOLE.png" id="1_16se1"]
-[ext_resource type="Texture2D" uid="uid://bsdxg7sqi3rq2" path="res://Sprites/VNAssets/Characters/TestGoodGuy/Gooleopenmouth.png" id="2_6aivn"]
+[ext_resource type="Texture2D" uid="uid://dlw8620avhpu4" path="res://Sprites/VNAssets/Characters/TestGoodGuy/idle/GOOLE.png" id="1_16se1"]
+[ext_resource type="Texture2D" uid="uid://bsdxg7sqi3rq2" path="res://Sprites/VNAssets/Characters/TestGoodGuy/talking/Gooleopenmouth.png" id="2_6aivn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gdlf3"]
 animations = [{

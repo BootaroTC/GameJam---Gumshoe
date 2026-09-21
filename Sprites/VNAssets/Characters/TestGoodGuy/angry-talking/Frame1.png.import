@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yxp1i3gfx3je"
-path="res://.godot/imported/TestBckg.png-c07b1d4b3291170ce40ef1d1048ce2ec.ctex"
+uid="uid://jbuqti502rve"
+path="res://.godot/imported/Frame1.png-86fda1e788dc31fd2bef41e493df1d46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/VNAssets/Backgrounds/TestBckg.png"
-dest_files=["res://.godot/imported/TestBckg.png-c07b1d4b3291170ce40ef1d1048ce2ec.ctex"]
+source_file="res://Sprites/VNAssets/Characters/TestGoodGuy/angry-talking/Frame1.png"
+dest_files=["res://.godot/imported/Frame1.png-86fda1e788dc31fd2bef41e493df1d46.ctex"]
 
 [params]
 

@@ -1,0 +1,23 @@
+[
+	{"location": "office", "music": "office_music"},
+	{"speaker": "Goole", "text": "Yo, I think we lowk gotta kill this guy."},
+	{"speaker": "BadGuy", "text": "LOWK I just saw this guy has bankai so im lowk gonna head out bro :sob:"},
+	{"speaker": "Goole", "text": "hmm... so you just think we will ignore everything you did?"},
+	{"choices": 
+		[
+			{"text": "Say Mb All", "goto": "first_choice"},
+			{"text": "Ctrl + J.", "goto": "second_choice"},
+		]
+	},
+	{"anchor": "first_choice"},
+	{"speaker": "Goole", "text": "Fine. I'm clocking out."},
+	{"speaker": "BadGuy", "text": "Yoooo thx bro I won't do it again"},
+	{"goto": "end"},
+	{"anchor": "second_choice"},
+	{"speaker": "Goole", "text": "Ban. . . Kai. Kanobeneriki Benihime Aratame Senbonzakura Kageyoshi Kyoka Suigetsu Ryoiki Tenkai Senpai Oppai"},
+	{"speaker": "BadGuy", "text": "HES ONE OF THE TEEEEEN"},
+	{"next_scene": "second_scene", "transition": "fade"},
+	{"anchor": "end"},
+	{"speaker": "Goole", "text": "Just as I had planned."},
+	{"next_scene": "second_scene", "transition": "slide"},
+]

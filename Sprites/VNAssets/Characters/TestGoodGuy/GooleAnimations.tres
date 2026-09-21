@@ -1,26 +1,47 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bv6morl4eii0x"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bv6morl4eii0x"]
 
-[ext_resource type="Texture2D" uid="uid://dlw8620avhpu4" path="res://Sprites/VNAssets/Characters/TestGoodGuy/GOOLE.png" id="1_xooce"]
-[ext_resource type="Texture2D" uid="uid://bsdxg7sqi3rq2" path="res://Sprites/VNAssets/Characters/TestGoodGuy/Gooleopenmouth.png" id="2_dvsy6"]
+[ext_resource type="Texture2D" uid="uid://cr2ajnhdg8odr" path="res://Sprites/VNAssets/Characters/TestGoodGuy/angry-idle/Frame1.png" id="1_qidor"]
+[ext_resource type="Texture2D" uid="uid://jbuqti502rve" path="res://Sprites/VNAssets/Characters/TestGoodGuy/angry-talking/Frame1.png" id="2_qhol1"]
+[ext_resource type="Texture2D" uid="uid://dlw8620avhpu4" path="res://Sprites/VNAssets/Characters/TestGoodGuy/idle/GOOLE.png" id="3_por8f"]
+[ext_resource type="Texture2D" uid="uid://bsdxg7sqi3rq2" path="res://Sprites/VNAssets/Characters/TestGoodGuy/talking/Gooleopenmouth.png" id="4_q6pp5"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xooce")
+"texture": ExtResource("1_qidor")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"angry-idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xooce")
+"texture": ExtResource("1_qidor")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_dvsy6")
+"texture": ExtResource("2_qhol1")
 }],
 "loop": true,
-"name": &"Speaking",
+"name": &"angry-talking",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_por8f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_por8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q6pp5")
+}],
+"loop": true,
+"name": &"talking",
 "speed": 4.0
 }]
