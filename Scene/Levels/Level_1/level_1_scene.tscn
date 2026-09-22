@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://evxj0ir03ocn"]
+[gd_scene load_steps=6 format=3 uid="uid://evxj0ir03ocn"]
 
 [ext_resource type="Texture2D" uid="uid://ocxkxlbex64u" path="res://Textures/Levels - Planning PNGs/lvl1.png" id="1_g7e8s"]
 [ext_resource type="PackedScene" uid="uid://cxn6fsb5astcu" path="res://Scene/PlayerScene/player.tscn" id="2_4wvda"]
+[ext_resource type="Texture2D" uid="uid://bgwfvqoopmj7r" path="res://Textures/WallTextureMaybe.png" id="3_urt1c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wvda"]
 albedo_texture = ExtResource("1_g7e8s")
 albedo_texture_force_srgb = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urt1c"]
+shading_mode = 0
+albedo_texture = ExtResource("3_urt1c")
 
 [node name="Level_1_Scene" type="Node3D"]
 
@@ -14,9 +19,240 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 use_collision = true
 size = Vector3(150, 0.5, 150)
 material = SubResource("StandardMaterial3D_4wvda")
 
 [node name="Player" parent="." instance=ExtResource("2_4wvda")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.261024, 1.3172932, 62.424202)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.261024, 2.3172932, 59.424202)
+
+[node name="Walls" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.52002, 2.3876953, 58.5)
+flip_faces = true
+size = Vector3(9, 5, 8)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.47998, 2.3876953, -40.5)
+flip_faces = true
+size = Vector3(21, 5, 36)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.02002, 2.3876953, 58.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.02002, 2.3876953, 58.5)
+flip_faces = true
+size = Vector3(24, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.47998, 2.3876953, 0.5)
+flip_faces = true
+size = Vector3(19, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.47998, 2.3876953, -1.5)
+flip_faces = true
+size = Vector3(19, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -26.47998, 2.3876953, -13)
+flip_faces = true
+size = Vector3(34, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20.52002, 2.3876953, -23)
+flip_faces = true
+size = Vector3(34, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 45.52002, 2.3876953, 13.5)
+flip_faces = true
+size = Vector3(53, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.97998, 2.3876953, -28)
+flip_faces = true
+size = Vector3(25, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.97998, 2.3876953, -38)
+flip_faces = true
+size = Vector3(67, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.02002, 2.3876953, -10)
+flip_faces = true
+size = Vector3(33, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.52002, 2.3876953, 38)
+flip_faces = true
+size = Vector3(18, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 57.52002, 2.3876953, 42)
+flip_faces = true
+size = Vector3(26, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -54.47998, 2.3876953, -7)
+flip_faces = true
+size = Vector3(32, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.47998, 2.3876953, 12)
+flip_faces = true
+size = Vector3(32, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.02002, 2.3876953, 53.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.97998, 2.3876953, 53.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.97998, 2.3876953, 53.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.97998, 2.3876953, 53.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.97998, 2.3876953, 26.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.97998, 2.3876953, 0.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.97998, 2.3876953, -1.5)
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.97998, 2.3876953, -0.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.97998, 2.3876953, 53.5)
+flip_faces = true
+size = Vector3(58, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.97998, 2.3876953, 26.5)
+flip_faces = true
+size = Vector3(58, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -39.47998, 2.3876953, 59.5)
+flip_faces = true
+size = Vector3(11, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -20.47998, 2.3876953, 59.5)
+flip_faces = true
+size = Vector3(11, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32.02002, 2.3876953, 58.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32.02002, 2.3876953, 48.5)
+flip_faces = true
+size = Vector3(24, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -43.97998, 2.3876953, 25)
+flip_faces = true
+size = Vector3(55, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.02002, 2.3876953, 40)
+flip_faces = true
+size = Vector3(31, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.02002, 2.3876953, 41.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.02002, 2.3876953, 41.5)
+operation = 2
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.97998, 2.3876953, -1.5)
+flip_faces = true
+size = Vector3(4, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4799805, 2.3876953, 41.5)
+flip_faces = true
+size = Vector3(63, 5, 4)
+material = SubResource("StandardMaterial3D_urt1c")
