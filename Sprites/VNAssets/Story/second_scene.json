@@ -1,5 +1,5 @@
 [
-	{"location": "moon", "music": "moon_theme"},
+	{"background": "moon", "music": "moon_theme"},
 	{"speaker": "BadGuy", "text": "HUH!? Your bankai.. takes us to the moon!?"},
 	{"speaker": "Goole", "text": "Yep. Because youve really..."},
 	{"speaker": "Goole", "text": "REALLY, PISSED ME OFF!", "expression": "angry"},
@@ -12,7 +12,7 @@
 		]
 	},
 	{"anchor": "return_office"},
-	{"location": "office", "music": "office_music"},
+	{"background": "office", "music": "office_music", "transition": "fade"},
 	{"speaker": "Goole", "text": "Here."},
 	{"goto": "end"},
 	{"anchor": "ult_attack"},

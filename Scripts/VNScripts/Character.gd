@@ -3,7 +3,8 @@ extends Node
 
 enum Name  {
 	BADGUY,
-	GOOLE
+	GOOLE,
+	EMPTY
 }
 
 const CHARACTER_DETAILS : Dictionary = {
@@ -16,6 +17,11 @@ const CHARACTER_DETAILS : Dictionary = {
 		"name": "Goole",
 		"morals": "Very good",
 		"sprite_frames": preload("res://Sprites/VNAssets/Characters/TestGoodGuy/GooleAnimations.tres")
+	},
+	Name.EMPTY: {
+		"name": " ",
+		"morals": "Very good",
+		"sprite_frames": preload("res://Scene/VNScenes/ReusableAssets/empty_animations.tres")
 	}
 }
 

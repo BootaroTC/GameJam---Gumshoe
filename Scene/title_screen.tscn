@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmubu62byqocx"]
+
+[ext_resource type="Script" uid="uid://c7nmgq00dju6a" path="res://Scripts/title_screen.gd" id="1_u8psj"]
+[ext_resource type="FontFile" uid="uid://kkjpbiasih6h" path="res://Sprites/VNAssets/Fonts/NotoSansKhmer-Regular.ttf" id="2_aeh8j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gf6eu"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9490196, 0.38039216, 0.46666667, 0.1882353)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 0.4745098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f55lh"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.6392157, 0.12941177, 0.24313726, 0.45882353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqa5s"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9490196, 0.38039216, 0.46666667, 0.1882353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21cly"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0.18431373)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck5eq"]
+content_margin_left = 30.0
+content_margin_top = 10.0
+content_margin_right = 30.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.4862745)
+
+[sub_resource type="Theme" id="Theme_up4ea"]
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("2_aeh8j")
+Button/styles/focus = SubResource("StyleBoxFlat_gf6eu")
+Button/styles/hover = SubResource("StyleBoxFlat_f55lh")
+Button/styles/normal = SubResource("StyleBoxFlat_wqa5s")
+Button/styles/pressed = SubResource("StyleBoxFlat_21cly")
+Label/fonts/font = ExtResource("2_aeh8j")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ck5eq")
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = ExtResource("2_aeh8j")
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_u8psj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_up4ea")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 304
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(800, 300)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 200
+text = "Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer2/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+
+[node name="NewGameButton" type="Button" parent="CanvasLayer2/CenterContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "New Game"
+
+[node name="VNTestButton" type="Button" parent="CanvasLayer2/CenterContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "VNTest"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer2/CenterContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Quit"

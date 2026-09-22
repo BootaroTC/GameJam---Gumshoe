@@ -11,6 +11,8 @@ var dialog_file: String = "res://Sprites/VNAssets/Story/first_scene.json"
 var dialog_index : int = 0
 var dialog_lines : Array = []
 
+var transitioning
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#load dialog
@@ -28,7 +30,8 @@ func _ready() -> void:
 func _input(event):
 	var line = dialog_lines[dialog_index]
 	var has_choices = line.has("choices")
-	if event.is_action_pressed("next_line") and not has_choices:
+	
+	if event.is_action_pressed("next_line") and !has_choices and !transitioning:
 		if dialog_ui.animate_text:
 			dialog_ui.skip_text_animation()
 		else:
@@ -44,15 +47,28 @@ func process_current_line():
 		dialog_file = "res://Sprites/VNAssets/Story/" + next_scene + ".JSON" if !next_scene.is_empty() else ""
 		transition_effect = line.get("transition", "fade")
 		SceneManager.transition_out(transition_effect)
+		transitioning = true
 		return
 		
 	# Check if has Location
-	if line.has("location"):
-		var background_file = "res://Sprites/VNAssets/Backgrounds/" + line["location"] + ".png"
+	if line.has("background"):
+		if line.has("transition"):
+			dialog_file = ""
+			transition_effect = line.get("transition", "fade")
+			SceneManager.transition_out(transition_effect)
+			transitioning = true
+			await  get_tree().create_timer(0.5).timeout
+			SceneManager.transition_in(transition_effect)
+			
+		var background_file = "res://Sprites/VNAssets/Backgrounds/" + line["background"] + ".png"
 		background.texture = load(background_file)
-		# var music_file = 
-		dialog_index += 1
-		process_current_line()
+		
+		if !line.has("transition"):
+			dialog_index += 1
+			process_current_line()
+			await  get_tree().create_timer(0.5).timeout
+			transitioning = false
+		# var music_file =
 		return
 		
 	# Check if this is goto command
@@ -74,6 +90,7 @@ func process_current_line():
 	elif line.has("speaker"):
 		var character_name = Character.get_enum_from_string(line["speaker"])
 		character_sprite.change_character(character_name, true, line.get("expression", ""))
+		
 	# Check Choices
 	if line.has("choices"):
 		# Display Choices
@@ -131,8 +148,8 @@ func _on_transition_out_completed():
 		dialog_lines = load_dialog(dialog_file)
 		dialog_index = 0
 		var first_line = dialog_lines[dialog_index]
-		if first_line.has("location"):
-			background.texture = load("res://Sprites/VNAssets/Backgrounds/" + first_line["location"] + ".png")
+		if first_line.has("background"):
+			background.texture = load("res://Sprites/VNAssets/Backgrounds/" + first_line["background"] + ".png")
 			#new music switch
 			dialog_index += 1
 		SceneManager.transition_in(transition_effect)
@@ -142,4 +159,5 @@ func _on_transition_out_completed():
 
 func _on_transition_in_completed():
 	# process dialog
+	transitioning = false
 	pass

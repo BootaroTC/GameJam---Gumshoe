@@ -91,3 +91,5 @@ func _slide_in():
 		transition_in_completed.emit()
 	)
 	
+func change_scene (path: String):
+	get_tree().change_scene_to_file(path)
