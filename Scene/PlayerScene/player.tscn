@@ -326,6 +326,7 @@ script = ExtResource("2_6qdyf")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Neck/Camera3D"]
 transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0.14299956, 0.12880588, -0.44664198)
 no_depth_test = true
+render_priority = 1
 sprite_frames = SubResource("SpriteFrames_3csk6")
 animation = &"Reload"
 autoplay = "Idle"
