@@ -1,12 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7mrg37k8dm3v"]
 
 [ext_resource type="Script" uid="uid://b7e0g4hy2ktju" path="res://Scripts/VNScripts/vn_character_sprite.gd" id="1_vop3a"]
-[ext_resource type="SpriteFrames" uid="uid://dsniap30nmlkf" path="res://Sprites/VNAssets/Characters/BadGuyTest/BadGuyAnimations.tres" id="2_vop3a"]
+[ext_resource type="SpriteFrames" uid="uid://bf0fb4wdu3l6d" path="res://Scene/VNScenes/ReusableAssets/empty_animations.tres" id="2_vop3a"]
 
 [node name="CharacterSprite" type="Node2D"]
 script = ExtResource("1_vop3a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_vop3a")
-animation = &"scared-talking"
-frame_progress = 0.8571123
+animation = &"talking"
